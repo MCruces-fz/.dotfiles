@@ -1,0 +1,12 @@
+*
+*/
+
+!.gitignore
+!.bashrc
+!.zshrc
+!.aliashrc
+!.config/nvim/init.vim
+!.config/nvim/mapping.vim
+!.config/nvim/indents.vim
+!.config/nvim/general.vim
+!.config/nvim/darcula.vim
