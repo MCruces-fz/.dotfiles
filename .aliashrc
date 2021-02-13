@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# G I T
+alias dotager="/usr/bin/env git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias logg="log --color --graph --oneline"
+
+# S S H   A L I A S E S
+if [[ ${TERM:6} == kitty ]]; then
+    alias sshces="kitty +kitten ssh -XY uscfpmcf@ft2.cesga.es" 
+    alias sshtru="kitty +kitten ssh -XY mcruces@fptrucha.usc.es"
+    alias ssh="kitty +kitten ssh"
+else
+    alias sshces="ssh -XY uscfpmcf@ft2.cesga.es" 
+    alias sshtru="ssh -XY mcruces@fptrucha.usc.es"
+fi
+
+# E M A C S
+alias emacs="emacs -nw"
+
+# E L O G 
+alias elog-tunnel="ssh -42NL 8000:fptrucha.usc.es:8080 mcruces@fptrucha.usc.es"
+# Type on Web Browser: http://localhost:8000/
+
+# G R A F A N A
+alias grafana-tunnel="ssh -42NL 8000:fptrucha.usc.es:3000 mcruces@fptrucha.usc.es"
+# Type on Web Browser: https://localhost:8000/
+
+# A I R E S
+export LD_LIBRARY_PATH=/home/mcruces/aires/lib:$LD_LIBRARY_PATH
+PATH=/home/mcruces/aires/bin:$PATH
+
+# C O R S I K A
+export COAST_USER_LIB=/home/mcruces/corsika-77400/coast/CorsikaOptions/example
+export LD_LIBRARY_PATH=$COAST_USER_LIB:$LD_LIBRARY_PATH
+
+# R O O T
+alias root6="source /home/mcruces/Cern_Root/root/bin/thisroot.sh"
+# source /home/mcruces/Cern_Root/root/bin/thisroot.sh
+alias root5="source /home/mcruces/Cern_Root/root_v5/root-build/bin/thisroot.sh"
+# export ROOTSYS=/Cern_Root/root_src/bindings/pyroot_legacy/:$ROOTSYS
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOTSYS/lib
+
+# N E X T   P R O J E C T
+alias ic-venv="cd /home/mcruces/Documents/GitHub/IC ; source manage.sh work_in_python_version_no_tests 3.7"
