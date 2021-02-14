@@ -1,13 +1,24 @@
+# B L A C K L I S T 
+
+# Before asking, all to Blacklist
 /*
 
 
+# W H I T E L I S T 
+
+# Git
 !.gitignore
+
+# Shell
 !.bashrc
 !.zshrc
 !.aliashrc
 
+# Configs
 !.config/
 .config/*
+
+# Neovim
 !.config/nvim
 .config/nvim/*
 !.config/nvim/init.vim
@@ -15,3 +26,6 @@
 !.config/nvim/indents.vim
 !.config/nvim/general.vim
 !.config/nvim/darcula.vim
+
+# Emacs
+.emacs
