@@ -27,5 +27,10 @@
 !.config/nvim/general.vim
 !.config/nvim/darcula.vim
 
+# Kitty
+!.config/kitty
+.config/kitty/*
+!.config/kitty/kitty.conf
+
 # Emacs
 .emacs
