@@ -19,7 +19,7 @@ SAVEHIST=50000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/mcruces/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -39,7 +39,7 @@ compinit
 # ==================================================================================== #
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/mcruces/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
