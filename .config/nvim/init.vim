@@ -7,6 +7,7 @@
 
 
 
+
 " # ======== P L U G I N S ========= #
 "
 " GitHub Page: https://github.com/junegunn/vim-plug
@@ -15,37 +16,63 @@
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.config/nvim/plugged/') " ('~/.vim/plugged')
-
-Plug 'preservim/nerdtree'
-" Help: https://jdhao.github.io/2018/09/10/nerdtree_usage/
-
-" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-
-Plug 'doums/darcula'
-
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+" Plug 'ivanov/vim-ipython' 
 
+" Functions:
+Plug 'preservim/nerdtree'
+Plug 'kien/ctrlp.vim'
+
+" Line:
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Color Scheme:
+Plug 'doums/darcula'
+
+" Syntax:
+Plug 'calviken/vim-gdscript3'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" Plug 'hdima/python-syntax'
+
+" LaTeX:
 Plug 'lervag/vimtex'
 
-" Plug 'ivanov/vim-ipython'
+" Git:
+" Plug 'tpope/vim-fugitive'
 
+" Completion:
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" COC Extensions:
+" COC extensions:
 " :CocInstall coc-vimtex
 " :CocInstall coc-snippets
 
-" Plug 'mhinz/neovim-remote'
-
-Plug 'calviken/vim-gdscript3'
-
-" Initialize plugin system
 call plug#end()
 
 "   P L U G I N S   C O N F I G U R A T I O N 
 "
+" --> semshi
+function MyCustomHighlights()
+    hi semshiLocal           ctermfg=209 guifg=#ff875f
+    hi semshiGlobal          ctermfg=214 guifg=#ffaf00
+    hi semshiImported        ctermfg=214 guifg=#A9B7C6 cterm=bold gui=NONE
+    hi semshiParameter       ctermfg=75  guifg=#A9B7C6
+    hi semshiParameterUnused ctermfg=117 guifg=#5D5D5D cterm=underline gui=underline
+    hi semshiFree            ctermfg=218 guifg=#ffafd7
+    hi semshiBuiltin         ctermfg=207 guifg=#8888C6
+    hi semshiAttribute       ctermfg=49  guifg=#A9B7C6
+    hi semshiSelf            ctermfg=249 guifg=#94558D
+    hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
+    hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
+    
+    hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+    hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+    sign define semshiError text=E> texthl=semshiErrorSign
+endfunction
+
+autocmd FileType python call MyCustomHighlights()
+" autocmd ColorScheme * call MyCustomHighlights()
+
 " --> vim-airline
 
 if !exists('g:airline_symbols')
@@ -92,8 +119,8 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
-
-source $HOME/.config/nvim/mapping.vim
-source $HOME/.config/nvim/general.vim
-source $HOME/.config/nvim/indents.vim
-source $HOME/.config/nvim/darcula.vim
+runtime! foo/**/*.vim
+runtime mapping.vim
+runtime general.vim
+runtime indents.vim
+runtime darcula.vim
