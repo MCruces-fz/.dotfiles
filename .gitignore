@@ -32,5 +32,10 @@
 .config/kitty/*
 !.config/kitty/kitty.conf
 
+# Qtile
+!.config/qtile
+.config/qtile/*
+!.config/qtile/config.py
+
 # Emacs
 .emacs
