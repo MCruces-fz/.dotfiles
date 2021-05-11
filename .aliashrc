@@ -1,44 +1,69 @@
 #!/bin/bash
 
-# G I T
-alias dotager="/usr/bin/env git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias logg="log --color --graph --oneline"
-
 # S S H   A L I A S E S
-if [[ ${TERM:6} == kitty ]]; then
-    alias sshces="kitty +kitten ssh -XY uscfpmcf@ft2.cesga.es" 
-    alias sshtru="kitty +kitten ssh -XY mcruces@fptrucha.usc.es"
+
+if [ $TERM = "xterm-kitty" ]; then
     alias ssh="kitty +kitten ssh"
+    alias sshtru="ssh -XY mcruces@fptrucha.usc.es"        # Trucha
 else
-    alias sshces="ssh -XY uscfpmcf@ft2.cesga.es" 
-    alias sshtru="ssh -XY mcruces@fptrucha.usc.es"
+    alias sshtru="ssh -XYTt mcruces@fptrucha.usc.es"      # Trucha
 fi
 
+alias ssheg2="sshtru ssh -XY fpegaes2.usc.es"             # Egaes
+
+MYSSID=$( iwgetid --raw )
+
+if [ "${MYSSID:-none}" = "eduroam" ]; then
+    alias sshces="ssh -XY uscfpmcf@ft2.cesga.es"          # CESGA
+    alias sshrig="ssh -XY mcruces@172.16.23.53"           # Rigel
+    alias sshctr="ssh -XY trasgo@fpcastor.inv.usc.es"     # Castor
+    alias sshpim="ssh -XY pi@172.16.23.61"                # Raspberry Monitor
+    alias sshpc1="ssh -XY labcafpc1.inv.usc.es"           # LabCAF PC1
+else
+    alias sshces="sshtru ssh -XY uscfpmcf@ft2.cesga.es"       # CESGA
+    alias sshrig="sshtru ssh -XY mcruces@172.16.23.53"        # Rigel
+    alias sshctr="sshtru ssh -XY trasgo@fpcastor.inv.usc.es"  # Castor
+    alias sshpim="sshtru ssh -XY pi@172.16.23.61"             # Raspberry Monitor
+    alias sshpc1="sshtru ssh -XY labcafpc1.inv.usc.es"            # LabCAF PC1
+fi
+
+alias sshpi1="sshctr ssh -XY raspberry01"                 # Raspberry 01 TFPGA
+alias sshpi2="sshctr ssh -XY raspberry02"                 # Raspberry 02 i2c
+
+
+# G I T 
+
+alias lg="git log --color --graph --oneline"
+alias lgg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias lggg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+
+
 # E M A C S
+
 alias emacs="emacs -nw"
 
+
 # E L O G 
+
 alias elog-tunnel="ssh -42NL 8000:fptrucha.usc.es:8080 mcruces@fptrucha.usc.es"
 # Type on Web Browser: http://localhost:8000/
 
+
 # G R A F A N A
+
 alias grafana-tunnel="ssh -42NL 8000:fptrucha.usc.es:3000 mcruces@fptrucha.usc.es"
 # Type on Web Browser: https://localhost:8000/
 
-# A I R E S
-export LD_LIBRARY_PATH=/home/mcruces/aires/lib:$LD_LIBRARY_PATH
-PATH=/home/mcruces/aires/bin:$PATH
+alias grafana="sshtru firefox https://localhost:3000"
 
-# C O R S I K A
-export COAST_USER_LIB=/home/mcruces/corsika-77400/coast/CorsikaOptions/example
-export LD_LIBRARY_PATH=$COAST_USER_LIB:$LD_LIBRARY_PATH
 
-# R O O T
-alias root6="source /home/mcruces/Cern_Root/root/bin/thisroot.sh"
-# source /home/mcruces/Cern_Root/root/bin/thisroot.sh
-alias root5="source /home/mcruces/Cern_Root/root_v5/root-build/bin/thisroot.sh"
-# export ROOTSYS=/Cern_Root/root_src/bindings/pyroot_legacy/:$ROOTSYS
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOTSYS/lib
+# C L I
+
+alias fwfh="grep -rnw . -e"  # Find Word From Here
+alias human="man"
+export PATH=$PATH:"$HOME/.local/mcbin"
+
 
 # N E X T   P R O J E C T
+
 alias ic-venv="cd /home/mcruces/Documents/GitHub/IC ; source manage.sh work_in_python_version_no_tests 3.7"
