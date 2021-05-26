@@ -4,31 +4,31 @@
 
 if [ $TERM = "xterm-kitty" ]; then
     alias ssh="kitty +kitten ssh"
-    alias sshtru="ssh -XY mcruces@fptrucha.usc.es"        # Trucha
+    alias sshtru="ssh -XY mcruces@fptrucha.usc.es"            # Trucha
 else
-    alias sshtru="ssh -XYTt mcruces@fptrucha.usc.es"      # Trucha
+    alias sshtru="ssh -XYTt mcruces@fptrucha.usc.es"          # Trucha
 fi
 
-alias ssheg2="sshtru ssh -XY fpegaes2.usc.es"             # Egaes
+alias ssheg2="sshtru ssh -XY fpegaes2.usc.es"                 # Egaes
 
 MYSSID=$( iwgetid --raw )
 
 if [ "${MYSSID:-none}" = "eduroam" ]; then
-    alias sshces="ssh -XY uscfpmcf@ft2.cesga.es"          # CESGA
-    alias sshrig="ssh -XY mcruces@172.16.23.53"           # Rigel
-    alias sshctr="ssh -XY trasgo@fpcastor.inv.usc.es"     # Castor
-    alias sshpim="ssh -XY pi@172.16.23.61"                # Raspberry Monitor
-    alias sshpc1="ssh -XY labcafpc1.inv.usc.es"           # LabCAF PC1
+    alias sshces="ssh -XY uscfpmcf@ft2.cesga.es"              # CESGA
+    alias sshrig="ssh -XY mcruces@172.16.23.53"               # Rigel
+    alias sshctr="ssh -XY trasgo@fpcastor.inv.usc.es"         # Castor
+    alias sshpim="ssh -XY pi@172.16.23.61"                    # Raspberry Monitor
+    alias sshpc1="ssh -XY labcafpc1.inv.usc.es"               # LabCAF PC1
 else
     alias sshces="sshtru ssh -XY uscfpmcf@ft2.cesga.es"       # CESGA
     alias sshrig="sshtru ssh -XY mcruces@172.16.23.53"        # Rigel
     alias sshctr="sshtru ssh -XY trasgo@fpcastor.inv.usc.es"  # Castor
     alias sshpim="sshtru ssh -XY pi@172.16.23.61"             # Raspberry Monitor
-    alias sshpc1="sshtru ssh -XY labcafpc1.inv.usc.es"            # LabCAF PC1
+    alias sshpc1="sshtru ssh -XY labcafpc1.inv.usc.es"        # LabCAF PC1
 fi
 
-alias sshpi1="sshctr ssh -XY raspberry01"                 # Raspberry 01 TFPGA
-alias sshpi2="sshctr ssh -XY raspberry02"                 # Raspberry 02 i2c
+alias sshpi1="sshctr ssh -XY raspberry01"                     # Raspberry 01 TFPGA
+alias sshpi2="sshctr ssh -XY raspberry02"                     # Raspberry 02 i2c
 
 
 # G I T 
