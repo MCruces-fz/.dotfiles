@@ -1,4 +1,8 @@
-neofetch
+if [[ "$(hostname)" == "fppercebe" ]]; then
+    neofetch --ascii_distro Raspbian
+else
+    neofetch
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -142,8 +146,16 @@ unsetopt AUTO_CD
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source "$HOME/.aliashrc"
+# C L I
+if ! [ -d ~/.local/mcbin/ ]; then
+    mkdir ~/.local/mcbin/
+fi
+export PATH=$PATH:"~/.local/mcbin/"
+
+# S H E L L
+if [ -f ~/.aliashrc ]; then
+    . ~/.aliashrc
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
