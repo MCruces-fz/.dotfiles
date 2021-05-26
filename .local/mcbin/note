@@ -1,0 +1,25 @@
+#!/bin/bash
+
+NOTES_DIR=$HOME/Documents/Notes/
+
+FILEID=$1
+FILENAME=$FILEID.md
+
+if ! [ -d "$NOTES_DIR" ]; then
+    mkdir -p $NOTES_DIR;
+fi
+
+cd $NOTES_DIR
+
+if ! [ -f "$NOTES_DIR$FILENAME" ]; then
+    echo "# $1" > $FILENAME;
+fi 
+
+cat << EOF >> $NOTES_DIR$FILENAME
+
+## Note: `date`
+
+
+EOF
+
+nvim -c "startinsert" +$ $FILENAME
