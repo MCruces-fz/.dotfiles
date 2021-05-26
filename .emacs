@@ -1,4 +1,3 @@
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -131,7 +130,7 @@ static char *gnus-pointer[] = {
 (put 'upcase-region 'disabled nil)
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 ;; Bind hippie-expand
-(global-set-key (kbd "C-p") 'dabbrev-expand)
+;; (global-set-key (kbd "C-p") 'dabbrev-expand)
 		
 ;; Activate python highlighting for PYX and PPL files
 (add-to-list 'auto-mode-alist '("\\.pyx\\'" . python-mode))
