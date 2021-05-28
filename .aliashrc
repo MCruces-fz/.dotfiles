@@ -31,6 +31,12 @@ alias sshpi1="sshctr ssh -XY raspberry01"                     # Raspberry 01 TFP
 alias sshpi2="sshctr ssh -XY raspberry02"                     # Raspberry 02 i2c
 
 
+# K E Y B O A R D   L A Y O U T
+
+alias asdf="sudo loadkeys dvorak"
+alias aoeu="sudo loadkeys us"
+
+
 # G I T 
 
 alias lg="git log --color --graph --oneline"
@@ -67,3 +73,4 @@ export PATH=$PATH:"$HOME/.local/mcbin"
 # N E X T   P R O J E C T
 
 alias ic-venv="cd /home/mcruces/Documents/GitHub/IC ; source manage.sh work_in_python_version_no_tests 3.7"
+
