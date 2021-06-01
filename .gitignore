@@ -38,4 +38,8 @@
 !.config/qtile/config.py
 
 # Emacs
-.emacs
+!.emacs
+
+# Binaries
+!.bin/
+
