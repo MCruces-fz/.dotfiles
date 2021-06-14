@@ -68,7 +68,6 @@ alias grafana="sshtru firefox https://localhost:3000"
 
 alias fwfh="grep -rnw . -e"  # Find Word From Here
 alias human="man"
-export PATH=$PATH:"$HOME/.local/mcbin"
 
 
 # N E X T   P R O J E C T
