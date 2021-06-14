@@ -68,9 +68,15 @@ alias grafana="sshtru firefox https://localhost:3000"
 
 alias fwfh="grep -rnw . -e"  # Find Word From Here
 alias human="man"
+alias gh="cd $HOME/Documents/GitHub/"  # Recommended: use ghctrlJ
 
 
 # N E X T   P R O J E C T
 
 alias ic-venv="cd /home/mcruces/Documents/GitHub/IC ; source manage.sh work_in_python_version_no_tests 3.7"
+
+
+# R O O T
+
+alias roto="root -l -q"
 
