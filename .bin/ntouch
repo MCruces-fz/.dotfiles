@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Create files with current date and given prefix, like:
+#    pf211552314.ext
+
+LEX=$1
+EXT=$1
+
+cp $1 $LEX`date +"%y%j%H%M%S"`.$EXT
+
