@@ -124,3 +124,5 @@ runtime mapping.vim
 runtime general.vim
 runtime indents.vim
 runtime darcula.vim
+
+echom ">^.^<"
