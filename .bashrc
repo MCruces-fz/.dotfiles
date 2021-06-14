@@ -3,8 +3,7 @@
 
 neofetch
 
-MYHOSTNAME=$( hostname )
-if [ "${MYHOSTNAME:-none}" = "fppercebe" ]; then
+if [[ "$(hostname)" == "fppercebe" ]]; then
     # A I R E S
     export LD_LIBRARY_PATH=/home/mcruces/aires/lib:$LD_LIBRARY_PATH
     # PATH=/home/mcruces/aires/bin:$PATH
@@ -141,6 +140,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+# C L I
+
+if ! [ -d ~/.bin/ ]; then
+    mkdir ~/.bin/
+fi
+export PATH=$PATH:"~/.bin/"
+
 if [ -f ~/.aliashrc ]; then
     . ~/.aliashrc
 fi
+
