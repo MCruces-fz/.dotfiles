@@ -12,12 +12,13 @@
 
 
 let mapleader=" "  " It defines the key for the map leader
-" let mapleader =","  " It defines the key for the map leader
 
 
 " ------------ N E O V I M  ------------ "
+
 nnoremap <leader>ev :vsplit $HOME/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source $HOME/.config/nvim/init.vim<cr>
+
 
 " ---------- N E R D T R E E ----------- "
 
@@ -41,16 +42,12 @@ nnoremap <leader>ntt :NERDTreeToggle<CR>
 " :noremap \bc i\chapter{}<ESC>i
 
 
-" ------------ S E A R C H ------------- "
+" -- S E A R C H   &   R E P L A C E --- "
 
-" Search for given text and replace with next given text in the hole file. (The . concatenates functions)"
-nnoremap <expr> <leader>sra ":%s/" . input("Search: ") . "/" . input("Replace: ") . "/gc" . "<Enter>
-
-" Search for given text and replace with next given text in the specified lines
-nnoremap <expr> <leader>srl ":" . input("First line: ") . "," . input("Last line: ") . "s/" . input("Search: ") . "/" . input("Replace: ") . "/gc" . "<Enter>"
-
-" Search for given text and replace with next given text in the current line
-nnoremap <expr> <leader>srh ":" . "s/" . input("Search: ") . "/" . input("Replace: ") . "/gc" . "<Enter>"
+" Replace in whole file -> :%s/\<foo\>/bar/gcI
+"     where  - foo: Word under cursor.
+"            - bar: New word.
+nnoremap <leader>rwf :%s/\<<C-r><C-w>\>//gcI<left><left><left><left>
 
 
 " -------- M O V E   B L O C K --------- "
@@ -58,3 +55,4 @@ nnoremap <expr> <leader>srh ":" . "s/" . input("Search: ") . "/" . input("Replac
 " Move block to left and right
 vnoremap <leader>h dhP`[<C-v>`]h 
 vnoremap <leader>l dlP`[<C-v>`]h 
+
