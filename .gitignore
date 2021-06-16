@@ -43,3 +43,11 @@
 # Binaries
 !.bin/
 
+# Pictures
+!Pictures/
+Pictures/*
+!Pictures/screenshot_1.png
+!Pictures/screenshot_2.png
+!Pictures/screenshot_3.png
+!Pictures/screenshot_4.png
+!Pictures/screenshot_5.png

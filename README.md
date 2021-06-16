@@ -20,9 +20,13 @@
 
 ## Screenshots
 
-![Awesome WM](pictures/screenshot_1.png)
-![Awesome WM](pictures/screenshot_2.png)
-![Awesome WM](pictures/screenshot_3.png)
+![Awesome WM](Pictures/screenshot_2.png)
+
+...                        |  ...
+:-------------------------:|:-------------------------:
+![Awesome WM](Pictures/screenshot_3.png) | ![Awesome WM](Pictures/screenshot_4.png)
+:-------------------------:|:-------------------------:
+![Awesome WM](Pictures/screenshot_1.png) | ![Awesome WM](Pictures/screenshot_5.png)
 
 ## Introduction
 
