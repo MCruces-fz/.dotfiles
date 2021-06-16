@@ -4,7 +4,7 @@
 #    pf211552314.ext
 
 LEX=$1
-EXT=$1
+EXT=$2
 
-cp $1 $LEX`date +"%y%j%H%M%S"`.$EXT
+touch $LEX`date +"%y%j%H%M%S"`.$EXT
 

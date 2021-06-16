@@ -194,7 +194,7 @@ fi
 if ! [ -d ~/.bin/ ]; then
     mkdir ~/.bin/
 fi
-export PATH=$PATH:"~/.bin/"
+export PATH=$PATH:"$HOME/.bin/"
 
 
 # S H E L L
