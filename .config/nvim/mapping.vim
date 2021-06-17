@@ -20,9 +20,21 @@ nnoremap <leader>ev :vsplit $HOME/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source $HOME/.config/nvim/init.vim<cr>
 
 
-" ---------- N E R D T R E E ----------- "
+" --------- W I N D O W I N G ---------- "
 
 nnoremap <leader>ntt :NERDTreeToggle<CR>
+
+" Move through windows
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
+
+" Resize windows
+nnoremap <M-u> <C-w>+
+nnoremap <M-i> <C-w>-
+nnoremap <M-o> <C-w>>
+nnoremap <M-p> <C-w><
 
 
 " ------------- L a T e X -------------- "
@@ -61,4 +73,8 @@ vnoremap <leader>l dlP`[<C-v>`]h
 
 " Get out from terminal insertion mode
 tnoremap <leader><ESC><ESC> <C-\><C-n>
+tnoremap <M-h> <C-\><C-n><C-w>h
+tnoremap <M-j> <C-\><C-n><C-w>j
+tnoremap <M-k> <C-\><C-n><C-w>k
+tnoremap <M-l> <C-\><C-n><C-w>l
 
