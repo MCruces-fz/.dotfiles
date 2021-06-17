@@ -14,7 +14,7 @@
 let mapleader=" "  " It defines the key for the map leader
 
 
-" ------------ N E O V I M  ------------ "
+" -------- V I M   C O N F I G --------- "
 
 nnoremap <leader>ev :vsplit $HOME/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source $HOME/.config/nvim/init.vim<cr>
@@ -55,4 +55,10 @@ nnoremap <leader>rwf :%s/\<<C-r><C-w>\>//gcI<left><left><left><left>
 " Move block to left and right
 vnoremap <leader>h dhP`[<C-v>`]h 
 vnoremap <leader>l dlP`[<C-v>`]h 
+
+
+" ---------- T E R M I N A L ----------- "
+
+" Get out from terminal insertion mode
+tnoremap <leader><ESC><ESC> <C-\><C-n>
 
