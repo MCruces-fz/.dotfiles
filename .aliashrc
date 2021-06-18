@@ -39,11 +39,47 @@ alias aoeu="sudo loadkeys us"
 
 # G I T
 
-alias dotager="/usr/bin/env git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias lg="git log --color --graph --oneline"
 alias lgg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias lggg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
+dotager() {
+    case "$1" in
+        listall)
+            shift
+            dotager ls-tree --full-tree -r --name-only HEAD "$@"
+            ;;
+        listtree)
+            shift
+            if hash treeify 2>/dev/null; then
+                dotager ls-tree --full-tree -r --name-only HEAD "$@" | treeify
+            else
+                dotager listall
+            fi
+            ;;
+        lgg)
+            dotager log \
+                --graph \
+                --abbrev-commit \
+                --color \
+                --decorate \
+                --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' \
+                --all
+            ;;
+        lggg)
+            dotager log \
+                --graph \
+                --abbrev-commit \
+                --color \
+                --decorate \
+                --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' \
+                --all
+            ;;
+        *)
+            /usr/bin/env git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
+            ;;
+    esac
+}
 
 # E M A C S
 
