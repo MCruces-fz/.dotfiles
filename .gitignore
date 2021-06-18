@@ -15,13 +15,7 @@
 !.aliashrc
 !.exports
 
-# Configs
-!.config/
-.config/*
-
 # Neovim
-!.config/nvim
-.config/nvim/*
 !.config/nvim/init.vim
 !.config/nvim/mapping.vim
 !.config/nvim/indents.vim
@@ -29,13 +23,9 @@
 !.config/nvim/darcula.vim
 
 # Kitty
-!.config/kitty
-.config/kitty/*
 !.config/kitty/kitty.conf
 
 # Qtile
-!.config/qtile
-.config/qtile/*
 !.config/qtile/config.py
 
 # Emacs
@@ -45,8 +35,6 @@
 !.bin/
 
 # Pictures
-!Pictures/
-Pictures/*
 !Pictures/screenshot_1.png
 !Pictures/screenshot_2.png
 !Pictures/screenshot_3.png
