@@ -13,7 +13,8 @@
 
 + [Screenshots](#screenshots)
 + [Introduction](#introduction)
-+ [Setup Repository](#setup-repository)
++ [Setup on a New Device](#setup-on-a-new-device)
++ [Create your Own Repository](#create-your-own-repository)
 + [Track Files](#track-files)
 + [Restore Configurations](#restore-configurations)
 + [Additional Commands](#additional-commands)
@@ -22,10 +23,9 @@
 
 ![Awesome WM](Pictures/screenshot_2.png)
 
-...                        |  ...
-:-------------------------:|:-------------------------:
+  ...                                    |  ...
+:---------------------------------------:|:---------------------------------------:
 ![Awesome WM](Pictures/screenshot_3.png) | ![Awesome WM](Pictures/screenshot_4.png)
-:-------------------------:|:-------------------------:
 ![Awesome WM](Pictures/screenshot_1.png) | ![Awesome WM](Pictures/screenshot_5.png)
 
 ## Introduction
@@ -35,27 +35,73 @@ This repository contains my personal configuration files (also known as
 repository was set up, how to use it and how to restore them, for example 
 on a new device.
 
-## Setup Repository
+## Setup on a New Device
 
-Setup a bare git repository in your home directory. Bare repositories have no
-working directory, so setup an alias to avoid typing the long command. Add the
-git directory `~/.dotfiles/` to the gitignore as a security measure. Setup
-remote and push. Hide untracked files when querying the status.
+Easy peasy lemon squeezy
+```bash
+git clone --bare https://github.com/MCruces-fz/.dotfiles
+alias dotager="/usr/bin/env git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+dotager checkout -- .
+dotager pull origin master
+```
 
+***Note:*** This is for my personal use. You can copy all you want, but I recommend
+following the steps below.
+
+## Create your Own Repository
+
+To convert your `$HOME` directory into a Git repository you need to use a *bare-one*, 
+if not, it could be a little messy.
+
+Setup a bare git repository in your home directory
 ```bash
 git init --bare "$HOME/.dotfiles"
-
+```
+Bare repositories have no working directory, so setup an alias to avoid 
+typing the long command
+```bash
 echo 'alias dotager="/usr/bin/env git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"' \
     >> "$HOME/.zshrc"
 source "$HOME/.zshrc"
-
+```
+Add the git directory `~/.dotfiles/` to the gitignore as a security measure.
+```bash
 echo '.dotfiles' >> "$HOME/.gitignore"
 dotager add "$HOME/.gitignore"
 dotager commit -m 'Git: Add gitignore'
-
-dotager remote add origin https://github.com/MCruces-fz/.dotfiles
+```
+Setup remote and push.
+```bash
+dotager remote add origin https://github.com/<username>/.dotfiles
 dotager push --set-upstream origin master
+```
+
+If you want, you can hide untracked files when querying the status
+```bash
 dotager config --local status.showUntrackedFiles no
+```
+but I prefer add a *black-list* to `.gitignore` and choose which files belong to *white-list*, one by one
+```bash
+# .gitignore
+
+# B L A C K L I S T 
+
+# Before asking, all to Blacklist
+/*
+
+
+# W H I T E L I S T 
+
+# Git
+!.gitignore
+
+# Shell
+!.bashrc
+
+# Neovim
+!.config/nvim/init.vim
+
+# [...]
 ```
 
 ***Note:*** The name `dotager` is an acronym of **dot**files man**ager**
@@ -64,7 +110,6 @@ dotager config --local status.showUntrackedFiles no
 
 Use the default git subcommands to track, update and remove files. You can
 obviously also use branches and all other features of git.
-
 ```bash
 dotager status
 dotager add .zshrc
@@ -75,10 +120,17 @@ dotager push
 ```
 
 To remove a file from the repository while keeping it locally you can use:
-
 ```bash
 dotager rm --cached ~/.some_file
 ```
+
+If you have a *black-list* and *white-list* in your `gitignore` as I have shown 
+in previous section, you can move to the staging area all untracked files (belonging
+to the *white-list*, of course) with
+```bash
+dotager add --all
+```
+instead of add one by one.
 
 ## Restore Configurations
 
@@ -115,15 +167,6 @@ dotager config --local status.showUntrackedFiles no
 
 Note that the automatic moving of already existing (thus conflicting) files
 fails if there are too many of them (git cuts the message at some point).
-
-The short variant, using a script with the commands above:
-
-```bash
-. <(curl -Ls https://dotfiles.mariya.ch)
-```
-
-(Note: This is for my personal use. Instead of directly sourcing the install
-script, you should save it somewhere on your system and review it.)
 
 ## Additional Commands
 
