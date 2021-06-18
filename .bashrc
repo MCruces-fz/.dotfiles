@@ -3,36 +3,6 @@
 
 neofetch
 
-if [[ "$(hostname)" == "fppercebe" ]]; then
-    # A I R E S
-    export LD_LIBRARY_PATH=/home/mcruces/aires/lib:$LD_LIBRARY_PATH
-    # PATH=/home/mcruces/aires/bin:$PATH
-
-    # C O R S I K A
-    # alias run-corsika='/home/mcruces/corsika-77400/run/corsika77400Linux_EPOS_urqmd'
-    export COAST_USER_LIB=/home/mcruces/corsika-77400/coast/CorsikaOptions/example
-    export LD_LIBRARY_PATH=$COAST_USER_LIB:$LD_LIBRARY_PATH
-
-    # P Y T H O N
-    # export PYTHONPATH="/home/mcruces/Cern_Root/root/lib:${PYTHONPATH}"
-
-    # R O O T
-    # export ROOTSYS=$HOME/Cern_Root/root/
-    # export ROOTSYS=/Cern_Root/root_src/bindings/pyroot_legacy/:$ROOTSYS
-
-    # export PATH=$PATH:$ROOTSYS/bin
-    # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOTSYS/lib
-
-    alias root6="source /home/mcruces/Cern_Root/root/bin/thisroot.sh"
-    source /home/mcruces/Cern_Root/root/bin/thisroot.sh
-    alias root5="source /home/mcruces/Cern_Root/root_v5/root-build/bin/thisroot.sh"
-
-    # T R A N S I E N T
-    # PATH=/home/mcruces/.local/bin:$PATH  # Path to Transient
-
-    export PYTHON_PATH=/home/mcruces/Documents/GitHub/Mask_RCNN:$PYTHON_PATH
-fi
-
 # G I T
 #
 # https://thucnc.medium.com/how-to-show-current-git-branch-with-colors-in-bash-prompt-380d05a24745
@@ -146,9 +116,20 @@ fi
 if ! [ -d ~/.bin/ ]; then
     mkdir ~/.bin/
 fi
-export PATH=$PATH:"~/.bin/"
+export PATH=$PATH:"$HOME/.bin/"
+
+
+# S H E L L
 
 if [ -f ~/.aliashrc ]; then
     . ~/.aliashrc
+else
+    echo "Aliases not loaded"
+fi
+
+if [ -f ~/.exports ]; then
+    . ~/.exports
+else
+    echo "Variables not exported"
 fi
 

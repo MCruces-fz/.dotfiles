@@ -149,46 +149,6 @@ unsetopt AUTO_CD
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-if [[ "$(hostname)" == "fppercebe" ]]; then
-    # P Y T H O N 
-    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/bin/python3/lib/
-    # source "$HOME/.local/bin/virtualenvwrapper.sh"
-    # export WORKON_HOME=/opt/virtualenvs
-    # export VIRTUALENVWRAPPER_HOOK_DIR=$WORKON_HOME/hooks
-
-    # A I R E S
-    export LD_LIBRARY_PATH=/home/mcruces/aires/lib:$LD_LIBRARY_PATH
-    PATH=/home/mcruces/aires/bin:$PATH
-
-    # C O R S I K A
-    export COAST_USER_LIB=/home/mcruces/corsika-77400/coast/CorsikaOptions/example
-    export LD_LIBRARY_PATH=$COAST_USER_LIB:$LD_LIBRARY_PATH
-
-    # R O O T
-    alias root6="source /home/mcruces/Cern_Root/root/bin/thisroot.sh"
-    source /home/mcruces/Cern_Root/root/bin/thisroot.sh
-    alias root5="source /home/mcruces/Cern_Root/root_v5/root-build/bin/thisroot.sh"
-    # export ROOTSYS=/Cern_Root/root_src/bindings/pyroot_legacy/:$ROOTSYS
-    # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOTSYS/lib
-
-    # P E A   B R A I N   P R O J E C T
-    export PYTHONPATH=/home/mcruces/Documents/GitHub/Mask_RCNN:$PYTHONPATH
-    alias pb-venv="cd /home/mcruces/Documents/GitHub/PEABRAIN-source; source manage.sh py_version 3.7"
-
-    # T R U F A
-    export TRUFALIB="/home/mcruces/Documents/GitHub/TRUFA/"
-
-    # GBA
-    PATH=$PATH:"$HOME/builds/devkitadv/bin/"
-    GCC_EXEC_PREFIX="$HOME/builds/devkitadv/lib/gcc-lib/"
-    alias gba="visualboyadvance-m"
-
-    # C O N D A
-    source $HOME/miniconda/etc/profile.d/conda.sh
-fi
-
-
 # C L I
 
 if ! [ -d ~/.bin/ ]; then
@@ -201,6 +161,14 @@ export PATH=$PATH:"$HOME/.bin/"
 
 if [ -f ~/.aliashrc ]; then
     . ~/.aliashrc
+else
+    echo "Aliases not loaded"
+fi
+
+if [ -f ~/.exports ]; then
+    . ~/.exports
+else
+    echo "Variables not exported"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
