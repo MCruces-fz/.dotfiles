@@ -49,29 +49,19 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
+
+" Load all Functions
+
+" runtime! foo/**/*.vim
+
+
 "   P L U G I N S   C O N F I G U R A T I O N 
 "
 " --> semshi
-function MyCustomHighlights()
-    hi semshiLocal           ctermfg=209 guifg=#ff875f
-    hi semshiGlobal          ctermfg=214 guifg=#ffaf00
-    hi semshiImported        ctermfg=214 guifg=#A9B7C6 cterm=bold gui=NONE
-    hi semshiParameter       ctermfg=75  guifg=#A9B7C6
-    hi semshiParameterUnused ctermfg=117 guifg=#5D5D5D cterm=underline gui=underline
-    hi semshiFree            ctermfg=218 guifg=#ffafd7
-    hi semshiBuiltin         ctermfg=207 guifg=#8888C6
-    hi semshiAttribute       ctermfg=49  guifg=#A9B7C6
-    hi semshiSelf            ctermfg=249 guifg=#94558D
-    hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
-    hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
-    
-    hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-    hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-    sign define semshiError text=E> texthl=semshiErrorSign
-endfunction
 
-autocmd FileType python call MyCustomHighlights()
-" autocmd ColorScheme * call MyCustomHighlights()
+autocmd FileType python call IntellyJ_highlikes()
+" autocmd ColorScheme * call IntellyJ_highlikes()
+
 
 " --> vim-airline
 
@@ -99,9 +89,12 @@ let g:vimtex_complete_enabled = 1
 
 
 " --> kite
+
 let g:kite_supported_languajes = ['python', 'javascript']
 
+
 " --> coc
+
 autocmd FileType python let b:coc_suggest_disable = 1
 autocmd FileType javascript let b:coc_suggest_disable = 1
 " autocmd FileType scss setl iskeyword+=@-@
@@ -119,7 +112,6 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
-runtime! foo/**/*.vim
 runtime mapping.vim
 runtime general.vim
 runtime indents.vim
