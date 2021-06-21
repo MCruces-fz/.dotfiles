@@ -52,7 +52,7 @@ call plug#end()
 
 " Load all Functions
 
-" runtime! foo/**/*.vim
+runtime! foo/**/*.vim
 
 
 "   P L U G I N S   C O N F I G U R A T I O N 
