@@ -95,7 +95,13 @@ but I prefer add a *black-list* to `.gitignore` and choose which files belong to
 # Shell
 !.bashrc
 
+# Configs
+!.config/
+.config/*
+
 # Neovim
+!.config/nvim
+.config/nvim/*
 !.config/nvim/init.vim
 
 # [...]
@@ -111,8 +117,8 @@ obviously also use branches and all other features of git.
 dotager status
 dotager add .zshrc
 dotager commit -m 'Zsh: Add zshrc'
-dotager add .vimrc
-dotager commit -m 'Vim: Add vimrc'
+dotager add .config/nvim/init.vim
+dotager commit -m 'Nvim: Update init.vim'
 dotager push
 ```
 
@@ -193,6 +199,33 @@ dotager() {
     esac
 }
 ```
+
+If you want to add new features to your own `dotager` function, create new *cases*
+into the flow control command
+```bash
+case "$1" in
+    case-1)
+        dotager [command-1]
+        ;;
+    case-2)
+        dotager [command-2]
+        ;;
+    *)
+        /usr/bin/env git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
+        ;;
+esac
+```
+where `case-1`, `case-2` are the names you will use
+```bash
+dotager case-1
+```
+and bash will execute
+```bash
+/usr/bin/env git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" [command-1]
+
+```
+
+### ZSH Tip
 
 `compdef` can provide `zsh` autocompletion of the `git` command for your
 equivalent `dotager` command.
