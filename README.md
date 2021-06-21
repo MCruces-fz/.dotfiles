@@ -39,10 +39,10 @@ on a new device.
 
 Easy peasy lemon squeezy
 ```bash
-git clone --bare https://github.com/MCruces-fz/.dotfiles
+git clone --bare https://github.com/MCruces-fz/.dotfiles "$HOME/.dotfiles"
 alias dotager="/usr/bin/env git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-dotager checkout -- .
-dotager pull origin master
+dotager reset --hard
+dotager clean -fd
 ```
 
 ***Note:*** This is for my personal use. You can copy all you want, but I recommend
@@ -85,13 +85,10 @@ but I prefer add a *black-list* to `.gitignore` and choose which files belong to
 # .gitignore
 
 # B L A C K L I S T 
-
 # Before asking, all to Blacklist
 /*
 
-
 # W H I T E L I S T 
-
 # Git
 !.gitignore
 
@@ -125,7 +122,7 @@ dotager rm --cached ~/.some_file
 ```
 
 If you have a *black-list* and *white-list* in your `gitignore` as I have shown 
-in previous section, you can move to the staging area all untracked files (belonging
+in previous section, you can move to the staging area all untracked changes (belonging
 to the *white-list*, of course) with
 ```bash
 dotager add --all
