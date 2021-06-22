@@ -1,6 +1,6 @@
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
-if [[ "$(hostname)" == "fppercebe" ]]; then
+if [[ "$(uname -n)" == "fppercebe" ]]; then
     neofetch --ascii_distro Raspbian
 else
     neofetch

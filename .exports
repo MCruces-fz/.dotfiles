@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-if [[ "$(hostname)" == "fppercebe" ]]; then
+if [[ "$(uname -n)" == "fppercebe" ]]; then
     # A I R E S
     export LD_LIBRARY_PATH="$HOME/aires/lib":$LD_LIBRARY_PATH
     export PATH="$HOME/aires/bin":$PATH
