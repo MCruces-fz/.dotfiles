@@ -71,8 +71,12 @@ vnoremap <leader>l dlP`[<C-v>`]h
 
 " ---------- T E R M I N A L ----------- "
 
+" Get into a new terminal, in insertion mode
+nnoremap <leader>tt :vsplit<CR><C-w>l:ter<CR>a
+
 " Get out from terminal insertion mode
 tnoremap <leader><ESC><ESC> <C-\><C-n>
+
 tnoremap <M-h> <C-\><C-n><C-w>h
 tnoremap <M-j> <C-\><C-n><C-w>j
 tnoremap <M-k> <C-\><C-n><C-w>k
