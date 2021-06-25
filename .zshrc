@@ -165,10 +165,10 @@ else
     echo "Aliases not loaded"
 fi
 
-if [ -f ~/.exports ]; then
-    . ~/.exports
+if [ -f ~/.fooshrc ]; then
+    . ~/.fooshrc
 else
-    echo "Variables not exported"
+    echo "Variables and functions not exported"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

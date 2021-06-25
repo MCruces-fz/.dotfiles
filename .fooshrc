@@ -1,0 +1,75 @@
+#!/bin/bash
+
+
+if [[ "$(uname -n)" == "fppercebe" ]]; then
+    # A I R E S
+    export LD_LIBRARY_PATH="$HOME/aires/lib":$LD_LIBRARY_PATH
+    export PATH="$HOME/aires/bin":$PATH
+
+    # C O R S I K A
+    COAST_USER_LIB="$HOME/corsika-77400/coast/CorsikaOptions/example"
+    export LD_LIBRARY_PATH=$COAST_USER_LIB:$LD_LIBRARY_PATH
+
+    # P Y T H O N
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/bin/python3/lib/
+
+    # R O O T
+    source "$HOME/Cern_Root/root/bin/thisroot.sh"  # "import ROOT" requirement
+
+    # P E A   B R A I N   P R O J E C T
+    export PYTHONPATH="$HOME/Documents/GitHub/Mask_RCNN":$PYTHONPATH
+    alias pb-venv="cd $HOME/Documents/GitHub/PEABRAIN-source; source manage.sh py_version 3.7"
+
+    # T R U F A
+    export TRUFALIB="$HOME/Documents/GitHub/TRUFA/"
+
+    # G B A
+    export PATH=$PATH:"$HOME/builds/devkitadv/bin/"
+    GCC_EXEC_PREFIX="$HOME/builds/devkitadv/lib/gcc-lib/"
+    alias gba="visualboyadvance-m"
+
+    # C O N D A
+    source $HOME/miniconda/etc/profile.d/conda.sh
+fi
+
+
+# G I T
+
+dotager() {
+    case "$1" in
+        listall)
+            shift
+            dotager ls-tree --full-tree -r --name-only HEAD "$@"
+            ;;
+        listtree)
+            shift
+            if hash treeify 2>/dev/null; then
+                dotager ls-tree --full-tree -r --name-only HEAD "$@" | treeify
+            else
+                dotager listall
+            fi
+            ;;
+        lgg)
+            dotager log \
+                --graph \
+                --abbrev-commit \
+                --color \
+                --decorate \
+                --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' \
+                --all
+            ;;
+        lggg)
+            dotager log \
+                --graph \
+                --abbrev-commit \
+                --color \
+                --decorate \
+                --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' \
+                --all
+            ;;
+        *)
+            /usr/bin/env git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
+            ;;
+    esac
+}

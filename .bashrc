@@ -127,9 +127,9 @@ else
     echo "Aliases not loaded"
 fi
 
-if [ -f ~/.exports ]; then
-    . ~/.exports
+if [ -f ~/.fooshrc ]; then
+    . ~/.fooshrc
 else
-    echo "Variables not exported"
+    echo "Variables and functions not exported"
 fi
 
