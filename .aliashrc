@@ -65,7 +65,8 @@ alias grafana="sshtru firefox https://localhost:3000"
 
 # C L I
 
-alias fwfh="grep -rnw . -e"  # Find Word From Here
+alias fwfh="grep -rnw . -e"            # Find Word From Here
+alias woman="man"                      # Copyright @FR01LAN (GitHub user)
 alias human="man"
 alias gh="cd $HOME/Documents/GitHub/"  # Recommended: use gh<C-j>
 alias go="cd $HOME/Documents/Gitolite/"
