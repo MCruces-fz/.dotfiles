@@ -41,7 +41,7 @@ Easy peasy lemon squeezy
 ```bash
 git clone --bare https://github.com/MCruces-fz/.dotfiles "$HOME/.dotfiles"
 alias dotager="/usr/bin/env git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-dotager reset --hard
+dotager reset  # --soft (HEAD), --mixed (HEAD + index), --hard (HEAD + index + files)
 dotager clean -fd
 ```
 
