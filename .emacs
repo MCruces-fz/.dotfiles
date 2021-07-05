@@ -135,3 +135,38 @@ static char *gnus-pointer[] = {
 ;; Activate python highlighting for PYX and PPL files
 (add-to-list 'auto-mode-alist '("\\.pyx\\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.pxd\\'" . python-mode))
+
+
+;; SKELETON PAIRS
+
+(setq skeleton-pair t)
+(defvar skeletons-alist
+  '((?\( . ?\))
+    (?\" . ?\")
+    (?[  . ?])
+    (?{  . ?})
+    (?$  . ?$)))
+
+(global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+
+;; Enable the backspace to deletes the pairs: a(|)b -> ab
+(defadvice delete-backward-char (before delete-empty-pair activate)
+  (if (eq (cdr (assq (char-before) skeletons-alist)) (char-after))
+      (and (char-after) (delete-char 1))))
+
+;; Make backward-kill-word (for me is M-backspace) to delete matching 
+;; par even if it separated by other text; very handy.
+(defadvice backward-kill-word (around delete-pair activate)
+  (if (eq (char-syntax (char-before)) ?\()
+      (progn
+ (backward-char 1)
+ (save-excursion
+   (forward-sexp 1)
+   (delete-char -1))
+ (forward-char 1)
+ (append-next-kill)
+ (kill-backward-chars 1))
+    ad-do-it))
